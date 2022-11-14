@@ -1,4 +1,4 @@
 class Booking < ApplicationRecord
   belongs_to :user
-  belongs_to :eventspace
+  belongs_to :event_space
 end
