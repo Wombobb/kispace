@@ -1,3 +1,4 @@
+
 puts "destroying all the stuff"
 User.destroy_all
 EventSpace.destroy_all
@@ -8,6 +9,7 @@ User.create!(email: "tom@kispace.com", password: "123123")
 User.create(email: "tash@kispace.com", password: "123123")
 User.create(email: "mo@kispace.com", password: "123123")
 User.create(email: "sammy@kispace.com", password: "123123")
+
 puts "made #{User.all.count} user/s"
 
 puts "creating eventspaces"
