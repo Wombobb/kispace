@@ -1,0 +1,14 @@
+<div class="container mr-md-3 mt-3" >
+  <!-- at the end of the body -->
+  <% @event_spaces.each do |space| %>
+    <div class="card-product">
+      <%= image_tag "http://source.unsplash.com/featured/?#{space.description.downcase}&#{rand(1000)}/800x333" %>
+      <div class="card-product-infos">
+        <h2><%= link_to space.name,  event_space_path(space), style: 'color: gray;text-decoration:none;' %></h2>
+        <p><%= space.location %></p>
+        <p><%= space.price%></p>
+        <p><%= space.description%></p>
+      </div>
+    </div>
+  <% end %>
+</div>
