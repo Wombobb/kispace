@@ -1,24 +1,15 @@
 class BookingsController < ApplicationController
 
-  def new
-    @user = current_user
-    @booking = Booking.new
-    @event_space = EventSpace.find(params[:event_space_id])
-  end
-
   def create
-    @user = current_user
     @booking = Booking.new(booking_params)
     @event_space = EventSpace.find(params[:event_space_id])
-    @booking.user = @user
+    @booking.event_space = @event_space
+    @booking.user = current_user
     if @booking.save
-      redirect_to user_dashboard_path(@user), status: :see_other
+      redirect_to user_dashboard_path(current_user), status: :see_other
     else
-      render :new, status: :unprocessable_entity
+      render "event_spaces/show", status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def update
@@ -27,6 +18,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :status, :event_space_id)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 end
