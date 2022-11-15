@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="space-title">
-    <h1><%= @event_space.name %></h1>
+  <div class="space-title m-3">
+    <h1><%= @event_space.name.capitalize %></h1>
   </div>
   <section id="photoArray">
     <div></div>
@@ -10,14 +10,19 @@
     <div></div>
   </section>
   <div class="flex-container">
-    <div class="card m-3">
-      <p><%= @event_space.location %></p>
-      <p><%= @event_space.price %></p>
-      <p><%= @event_space.description %></p>
-    </div>
-    <div class="card m-3">
-      <p><%=  %></p>
+    <div class="row">
+      <div class="col">
+        <div class="spaces-card m-4 p-4">
+          <p><%= @event_space.location.capitalize %></p>
+          <p><%= @event_space.price %></p>
+          <p><%= @event_space.description %></p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="spaces-card m-4 p-4">
+          <%= render "bookings/form" %>
+        </div>
+      </div>
     </div>
   </div>
-  <%= render "bookings/form" %>
 </div>
