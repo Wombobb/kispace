@@ -1,0 +1,11 @@
+<h1>Dashboard</h1>
+<p><%= @user.email %></p>
+
+<div class="container p-3">
+  <% if @user.bookings.present? %>
+    <%= render 'users/booking_grid'%>
+  <% end %>
+  <% if @event_spaces.present? %>
+    <%= render 'users/event_list_grid' %>
+  <% end %>
+</div>
