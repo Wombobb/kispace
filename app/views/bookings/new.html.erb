@@ -1,0 +1,9 @@
+<div class="container mt-4">
+  <h1>MAKE A BOOOOOOOKING</h1>
+  <%= simple_form_for [@event_space, @booking] do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit %>
+  <% end %>
+  <%= link_to "back", user_path(@user), class: "btn btn-primary text-decoration-none mt-4" %>
+</div>
