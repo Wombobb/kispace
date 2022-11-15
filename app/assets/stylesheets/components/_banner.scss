@@ -1,7 +1,8 @@
 .banner {
   background-size: cover;
-  background-position: center;
+  background-position: center bottom;
   padding: 150px 0;
+  border-radius: 3px;
 }
 
 .banner h1 {
@@ -16,5 +17,5 @@
   font-size: 20px;
   color: white;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
