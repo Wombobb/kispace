@@ -1,0 +1,19 @@
+#photoArray {
+  display: grid;
+  grid-gap: .5em;
+  grid-template-areas:
+    "photoOne photoTwo photoThree"
+    "photoOne photoFour photoFive";
+  grid-template-columns: 1fr 20% 20%;
+}
+
+#photoArray > div {
+  border: 2px solid rgba(210,210,210,0.2);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#photoArray > div:first-child {
+  grid-area: photoOne;
+  height: 450px;
+}

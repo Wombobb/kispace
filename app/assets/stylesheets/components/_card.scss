@@ -24,6 +24,17 @@
   text-decoration: none;
 }
 
+.spaces-card {
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: black;
+  background-color: white;
+  text-shadow: 0 0 0 black;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 360px;
+}
+
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
     grid-template-columns: 1fr;
