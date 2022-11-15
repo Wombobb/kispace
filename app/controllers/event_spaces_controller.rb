@@ -4,6 +4,7 @@ class EventSpacesController < ApplicationController
     @event_space = EventSpace.find(params[:id])
     @booking = Booking.new
   end
+
   def index
     @event_spaces = EventSpace.all
   end
@@ -21,10 +22,16 @@ class EventSpacesController < ApplicationController
     end
   end
 
+  def search
+    request = params[:search].downcase
+    @results = EventSpace.all.where("location ILIKE ?", "%#{request}%")
+  end
+
   private
 
   def space_params
     params.require(:event_space).permit(:name, :location, :description, :user_id)
   end
+
 
 end
