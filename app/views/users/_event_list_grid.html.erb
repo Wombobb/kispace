@@ -1,0 +1,17 @@
+<h2>My Event Spaces:</h2>
+<% @event_spaces.each do |space| %>
+  <div class="row">
+    <div class="col-sm">
+      <p>Event Space:</p>
+      <%= space.name%>
+    </div>
+    <div class="col-sm">
+      <p>Location: </p>
+      <%= space.location %>
+    </div>
+    <div class="col-sm">
+      <p>Price: </p>
+      <%= space.price %>
+    </div>
+  </div>
+<% end %>

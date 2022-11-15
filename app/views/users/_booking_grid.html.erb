@@ -1,0 +1,17 @@
+<h2>My Bookings:</h2>
+<% @user.bookings.each do |booking| %>
+  <div class="row">
+    <div class="col-sm">
+      <p>Event Space:</p>
+      <%= booking.event_space.name%>
+    </div>
+    <div class="col-sm">
+      <p>Location: </p>
+      <%= booking.event_space.location %>
+    </div>
+    <div class="col-sm">
+      <p>Price: </p>
+      <%= booking.event_space.price %>
+    </div>
+  </div>
+<% end %>
