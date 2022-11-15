@@ -4,6 +4,7 @@ class EventSpacesController < ApplicationController
     @event_space = EventSpace.find(params[:id])
     @booking = Booking.new
   end
+
   def index
     @event_spaces = EventSpace.all
   end
@@ -14,17 +15,18 @@ class EventSpacesController < ApplicationController
 
   def create
     @event_space = EventSpace.new(space_params)
+    @event_space.user = current_user
     if @event_space.save
       redirect_to event_space_path(@event_space)
     else
-      render status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
   def space_params
-    params.require(:event_space).permit(:name, :location, :description, :user_id)
+    params.require(:event_space).permit(:name, :location, :description, :price)
   end
 
 end
