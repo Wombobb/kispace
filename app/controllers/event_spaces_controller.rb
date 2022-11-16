@@ -1,5 +1,5 @@
 class EventSpacesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def show
     @event_space = EventSpace.find(params[:id])
@@ -30,6 +30,7 @@ class EventSpacesController < ApplicationController
   def search
     request = params[:search].downcase
     @results = EventSpace.all.where("location ILIKE ?", "%#{request}%")
+    authorize @results
   end
 
   private
