@@ -46,7 +46,7 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 # Custom gems
-gem "dotenv-rails", groups: [:development, :test]
+gem "dotenv-rails", groups: [:development, :production, :test]
 gem "cloudinary"
 
 
