@@ -18,11 +18,24 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
   border-radius: 3px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
 }
 
 .card-category a {
   color: white;
   text-decoration: none;
+ }
+
+.card-link {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+  }
 }
 
 .spaces-card {
@@ -34,6 +47,10 @@
   border-radius: 3px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   height: 360px;
+}
+
+.city_card a {
+  text-decoration: none;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
