@@ -39,6 +39,39 @@
   }
 }
 
+.card-holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-info-about {
+  color: $gray;
+  // font-size: 24px;
+  // font-weight: bold;
+  align-items:flex-start;
+  padding-left: 24px;
+  h2, h5 {
+    font-weight: bolder;
+  }
+}
+
+.card-about {
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  width: 50%;
+  display: flex;
+  // align-items: left;
+  color: $gray;
+  font-size: 24px;
+  // font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
 .spaces-card {
   background-size: cover;
   background-repeat: no-repeat;
@@ -53,6 +86,8 @@
 .city_card a {
   text-decoration: none;
 }
+
+
 
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
