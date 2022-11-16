@@ -24,7 +24,7 @@
           <td><%= booking.start_date %></td>
           <td>
             <%= simple_form_for(booking) do |f| %>
-               <%= f.input :status, collection: Booking::STATUS, on_change(submit) %>
+               <%= f.input :status, collection: Booking::STATUS %>
                <%= f.submit %>
             <% end %>
           </td>
