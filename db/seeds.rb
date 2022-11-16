@@ -1,3 +1,4 @@
+require "faker"
 
 puts "destroying all the stuff"
 Booking.destroy_all
