@@ -4,7 +4,6 @@
   <% else %>
     <h4 class="">Booking</h4>
   <% end %>
-  <% @user.bookings.each do |booking| %>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -15,13 +14,14 @@
       </tr>
     </thead>
     <tbody>
+    <% @user.bookings.each do |booking| %>
       <tr>
         <td><%= booking.event_space.name%></td>
         <td><%= booking.event_space.location%></td>
         <td><%= booking.event_space.price%></td>
         <td><%= booking.status%></td>
       </tr>
+    <% end %>
     </tbody>
   </table>
-  <% end %>
 </div>
