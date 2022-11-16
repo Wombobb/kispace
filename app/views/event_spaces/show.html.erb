@@ -1,4 +1,4 @@
-<%= link_to '<- Back', event_spaces_index_path, class: 'btn btn-light'  %>
+<%= link_to '<- Back To Listings', event_spaces_index_path, class: 'btn btn-light'  %>
 <div class="container">
   <div class="space-title m-3">
     <h1><%= @event_space.name.capitalize %></h1>
@@ -14,8 +14,8 @@
     <div class="row">
       <div class="col">
         <div class="spaces-card m-4 p-4">
-          <p><%= @event_space.location.capitalize %></p>
-          <p><%= @event_space.price %></p>
+          <h1><%= @event_space.location.capitalize %></h1>
+          <p>¥<%= @event_space.price %></p>
           <p><%= @event_space.description %></p>
         </div>
       </div>
