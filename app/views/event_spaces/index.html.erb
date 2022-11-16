@@ -11,11 +11,11 @@
   <% @event_spaces.each do |space| %>
     <div class="card mb-3" style="width: 40rem;">
       <div class="col-sm-12">
-        <img class="card-img-top" src=<%="http://source.unsplash.com/featured/?#{space.location}&#{rand(1000)}/400x333"%> >
+        <img class="card-img-top" src=<%=space.photos.attached? ? cl_image_path(space.photos.first.key) : "http://source.unsplash.com/featured/?#{space.location}&#{rand(1000)}/400x333"%> >
         <div class="card-body">
-          <h2 class="card-title"><%= link_to space.name,  event_space_path(space), style: 'color: gray;text-decoration:none;' %></h2>
-          <p class="card-text"><%= space.location %></p>
-          <p class="card-text"><%= space.price%></p>
+          <h2 class="card-title"><%= link_to space.name,  event_space_path(space), style: 'color: orange;text-decoration:none;' %></h2>
+          <p class="card-text"><%= space.location.capitalize %></p>
+          <p class="card-text">¥<%= space.price%></p>
           <p class="card-text"><%= space.description%></p>
         </div>
       </div>
