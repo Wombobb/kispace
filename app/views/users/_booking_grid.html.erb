@@ -1,17 +1,27 @@
-<h2>My Bookings:</h2>
-<% @user.bookings.each do |booking| %>
-  <div class="row">
-    <div class="col-sm">
-      <p>Event Space:</p>
-      <%= booking.event_space.name%>
-    </div>
-    <div class="col-sm">
-      <p>Location: </p>
-      <%= booking.event_space.location %>
-    </div>
-    <div class="col-sm">
-      <p>Price: </p>
-      <%= booking.event_space.price %>
-    </div>
-  </div>
-<% end %>
+<div class="container mt-3">
+  <% if @user.bookings.count > 1 %>
+    <h4 class="">Bookings</h4>
+  <% else %>
+    <h4 class="">Booking</h4>
+  <% end %>
+  <% @user.bookings.each do |booking| %>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name:</th>
+        <th scope="col">Location:</th>
+        <th scope="col">Price:</th>
+        <th scope="col">Status:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= booking.event_space.name%></td>
+        <td><%= booking.event_space.location%></td>
+        <td><%= booking.event_space.price%></td>
+        <td><%= booking.status%></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

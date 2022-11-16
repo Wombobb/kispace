@@ -1,11 +1,24 @@
-<h1>Dashboard</h1>
-<p><%= @user.email %></p>
 
-<div class="container p-3">
-  <% if @user.bookings.present? %>
-    <%= render 'users/booking_grid'%>
-  <% end %>
-  <% if @event_spaces.present? %>
-    <%= render 'users/event_list_grid' %>
-  <% end %>
+<div class="container m-3">
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <h1 class="text-secondary">Dashboard</h1>
+    </div>
+    <div class="col">
+      <p>Welcome back, <%= @user.email %></p>
+    </div>
+    <div class="col">
+        <%= link_to "Add Space", new_event_space_path, class: "btn btn-flat" %>
+        <%= link_to "Add Booking", event_spaces_path, class: "btn btn-flat" %>
+    </div>
+  </div>
+  <div class="row">
+    <% if @user.bookings.present? %>
+      <%= render 'users/booking_grid'%>
+    <% end %>
+    <% if @event_spaces.present? %>
+      <%= render 'users/event_list_grid' %>
+    <% end %>
+  </div>
+
 </div>
