@@ -1,8 +1,8 @@
 
 puts "destroying all the stuff"
-User.destroy_all
-EventSpace.destroy_all
 Booking.destroy_all
+EventSpace.destroy_all
+User.destroy_all
 
 puts "creating users"
 User.create!(email: "tom@kispace.com", password: "123123")
