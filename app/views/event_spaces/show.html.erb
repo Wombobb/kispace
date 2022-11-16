@@ -1,26 +1,26 @@
-<%= link_to '<- Back To Listings', event_spaces_index_path, class: 'btn btn-light'  %>
+<%= link_to '<- Back', event_spaces_index_path, class: 'btn btn-light'  %>
 <div class="container">
-  <div class="space-title m-3">
+  <div class="space-title">
     <h1><%= @event_space.name.capitalize %></h1>
   </div>
   <section id="photoArray">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.first.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
+    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.second.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
+    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.third.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
+    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.forth.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
+    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.fifth.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
   </section>
   <div class="flex-container">
-    <div class="row">
+    <div class="row mt-3">
       <div class="col">
-        <div class="spaces-card m-4 p-4">
-          <h1><%= @event_space.location.capitalize %></h1>
+        <div class="spaces-card p-4">
+          <p><%= @event_space.location.capitalize %></p>
           <p>¥<%= @event_space.price %></p>
           <p><%= @event_space.description %></p>
         </div>
       </div>
       <div class="col">
-        <div class="spaces-card m-4 p-4">
+        <div class="spaces-card p-4">
           <%= render "bookings/form" %>
         </div>
       </div>
