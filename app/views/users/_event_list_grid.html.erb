@@ -1,17 +1,36 @@
-<h2>My Event Spaces:</h2>
-<% @event_spaces.each do |space| %>
-  <div class="row">
-    <div class="col-sm">
-      <p>Event Space:</p>
-      <%= space.name%>
-    </div>
-    <div class="col-sm">
-      <p>Location: </p>
-      <%= space.location %>
-    </div>
-    <div class="col-sm">
-      <p>Price: </p>
-      <%= space.price %>
-    </div>
-  </div>
-<% end %>
+<div class="container mt-3">
+  <% if @event_spaces.count > 1 %>
+    <h4 class="">Event Spaces</h4>
+  <% else %>
+    <h4 class="">Event Space</h4>
+  <% end %>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name:</th>
+          <th scope="col">Location:</th>
+          <th scope="col">Price:</th>
+          <th scope="col">From:</th>
+          <th scope="col">Status:</th>
+        </tr>
+      </thead>
+      <tbody>
+  <% @event_spaces.each do |space| %>
+    <% space.bookings.each do |booking| %>
+        <tr>
+          <td><%= space.name%></td>
+          <td><%= space.location %></td>
+          <td> <%= space.price %></td>
+          <td><%= booking.start_date %></td>
+          <td>
+            <%= simple_form_for(booking) do |f| %>
+               <%= f.input :status, collection: Booking::STATUS, on_change(submit) %>
+               <%= f.submit %>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  <% end %>
+      </tbody>
+    </table>
+</div>
