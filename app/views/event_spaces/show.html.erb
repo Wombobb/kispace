@@ -14,8 +14,14 @@
     <div class="row mt-3">
       <div class="col">
         <div class="spaces-card p-4">
-          <h1><%= @event_space.location.capitalize %></h1>
-          <h2>¥<%= @event_space.price %></h2>
+          <div id="show-inline">
+            <span id="show-city">
+              <h2><%= @event_space.location.capitalize %></h2>
+            </span>
+            <span id="show-price">
+              <h2>¥<%= @event_space.price %></h2>
+            </span>
+          </div>
           <p><%= @event_space.description %></p>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add a Review</button>
         </div>
@@ -34,8 +40,8 @@
         <li>
           <h4><%= review.comment%></h4>
           <p><% (review.rating).times do %>
-            <i class="fa-solid fa-star text-warning"></i>
-          <% end %>
+              <i class="fa-solid fa-star text-warning"></i>
+            <% end %>
           </p>
         </li>
       <% end %>

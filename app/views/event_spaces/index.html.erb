@@ -6,10 +6,11 @@
         <div class="index-card">
           <img class="card-img-top" src=<%=space.photos.attached? ? cl_image_path(space.photos.first.key) : "http://source.unsplash.com/featured/?#{space.location}&#{rand(1000)}/400x333"%> >
           <div class="card-body p-3">
-            <h2 class="card-title"><%= link_to space.name, event_space_path(space), style: 'color: orange;text-decoration:none;' %></h2>
-            <p class="card-text"><%= space.location.capitalize %></p>
-            <p class="card-text">¥<%= space.price%></p>
-            <p class="card-text"><%= space.description%></p>
+            <h3 class="card-title"><%= link_to space.name, event_space_path(space), style: 'color: orange;text-decoration:none;' %></h3>
+            <div id="index-inline">
+              <span id="index-city"><%= space.location.capitalize %></span>
+              <span id="index-price">¥<%= space.price %></span>
+            </div>
           </div>
         </div>
       <% end %>
