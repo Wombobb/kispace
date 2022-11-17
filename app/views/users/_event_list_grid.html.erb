@@ -4,33 +4,42 @@
   <% else %>
     <h4 class="">Event Space</h4>
   <% end %>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Name:</th>
-          <th scope="col">Location:</th>
-          <th scope="col">Price:</th>
-          <th scope="col">From:</th>
-          <th scope="col">Status:</th>
-        </tr>
-      </thead>
-      <tbody>
-  <% @event_spaces.each do |space| %>
-    <% space.bookings.each do |booking| %>
-        <tr>
-          <td><%= space.name%></td>
-          <td><%= space.location %></td>
-          <td> <%= space.price %></td>
-          <td><%= booking.start_date %></td>
-          <td>
-            <%= simple_form_for(booking) do |f| %>
-               <%= f.input :status, collection: Booking::STATUS %>
-               <%= f.submit %>
+  <div class="bookings">
+    <% @event_spaces.each do |space| %>
+      <% space.bookings.sort_by{ |date| date.start_date }.each do |booking| %>
+        <div class="booking">
+          <div class='booking-left'>
+            <!-- if you're using cloudinary and activestorage -->
+            <% if booking.user.photo.attached? %>
+              <%= cl_image_tag booking.user.photo.key  %>
+              <% end %>
+            <div class="booking-info">
+              <div class="booking-info-title">
+                <%= space.name %>
+                <%= booking.user.f_name %>
+              </div>
+              <div class="booking-info-details">
+                <%= booking.start_date.strftime("%b. %d, %Y") %> - <%= booking.end_date.strftime("%b. %d, %Y") %>
+              </div>
+              </div>
+          </div>
+          <div class="booking-actions">
+            <% if booking.pending? %>
+              <%= simple_form_for booking do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                <%= f.submit 'Accept', class: 'btn btn-info' %>
+              <% end %>
+            <%= simple_form_for booking do |f| %>
+              <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+              <%= f.submit 'Reject', class: 'btn btn-light' %>
             <% end %>
-          </td>
-        </tr>
+            <% else %>
+              <p class='booking-tag'><%= booking.status %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-      </tbody>
-    </table>
+  </div>
+
 </div>

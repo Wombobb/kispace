@@ -11,5 +11,6 @@ Rails.application.routes.draw do
       resources :bookings, only: :create
   end
   resources :bookings, only: :update
+  resources :users, only: %i[edit update]
   get '/dashboard', to: 'users#dashboard', as: :user_dashboard
 end
