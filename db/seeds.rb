@@ -14,6 +14,7 @@ User.create(email: "mo@kispace.com", password: "123123")
 User.create(email: "sammy@kispace.com", password: "123123")
 50.times do
   User.create!(email: Faker::Internet.email, password: "123123")
+  # photo: Faker::LoremFlickr.image(size: "50x60", search_terms: ['avatar', 'person'])
 end
 puts "made #{User.all.count} user/s"
 
