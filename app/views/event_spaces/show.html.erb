@@ -30,10 +30,13 @@
   <div class="review-card">
     <h2>Reviews</h2>
     <ul>
-      <% @event_space_reviews.each do |review| %>
+      <% @event_space.reviews.each do |review| %>
         <li>
           <h4><%= review.comment%></h4>
-          <p>Rated: <%= review.rating%> stars</p>
+          <p><% (review.rating).times do %>
+            <i class="fa-solid fa-star text-warning"></i>
+          <% end %>
+          </p>
         </li>
       <% end %>
     </ul>
