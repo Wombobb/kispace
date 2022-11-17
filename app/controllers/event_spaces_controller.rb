@@ -8,7 +8,13 @@ class EventSpacesController < ApplicationController
   end
 
   def index
-    @event_spaces = policy_scope(EventSpace)
+    if params[:search].present?
+      sql_query = "location ILIKE :q OR description ILIKE :q"
+      @event_spaces = policy_scope(EventSpace.all.where(sql_query, q: "%#{params[:search]}%"))
+    else
+      @event_spaces = policy_scope(EventSpace)
+    end
+    authorize @event_spaces
   end
 
   def new
@@ -27,11 +33,11 @@ class EventSpacesController < ApplicationController
     end
   end
 
-  def search
-    request = params[:search].downcase
-    @results = EventSpace.all.where("location ILIKE ?", "%#{request}%")
-    authorize @results
-  end
+  # def search
+  #   request = params[:search].downcase
+  #   @results = EventSpace.all.where("location ILIKE ?", "%#{request}%")
+  #   authorize @results
+  # end
 
   private
 
