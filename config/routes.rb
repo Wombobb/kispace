@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index
-  get '/search', to: 'event_spaces#search'
   resources :event_spaces, only: %i[new index show create] do
       resources :bookings, only: :create
   end
