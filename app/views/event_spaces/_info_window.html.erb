@@ -1,0 +1,6 @@
+<div>
+  <img class="card-img-map" height=150px width=150px src=<%=space.photos.attached? ? cl_image_path(space.photos.first.key) : "http://source.unsplash.com/featured/?#{space.location}&#{rand(1000)} "%> >
+  <h3 class="card-title"><%= link_to space.name,  event_space_path(space), style: 'color: orange;text-decoration:none;' %></h3>
+  <h6 class="card-text"><%= space.location.capitalize %></h6>
+  <h6 class="card-text">¥<%= space.price%></h6>
+</div>

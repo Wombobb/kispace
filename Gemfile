@@ -48,6 +48,8 @@ gem "sassc-rails"
 # Custom gems
 gem "dotenv-rails", groups: [:development, :production, :test]
 gem "cloudinary"
+gem "geocoder"
+
 
 
 
