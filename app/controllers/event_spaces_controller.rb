@@ -5,7 +5,6 @@ class EventSpacesController < ApplicationController
     @event_space = EventSpace.find(params[:id])
     @booking = Booking.new
     @review = Review.new
-    @event_space_reviews = Review.where(event_space: @event_space)
     authorize @event_space
     @markers =
       [{
@@ -17,7 +16,7 @@ class EventSpacesController < ApplicationController
   end
 
   def index
-     if params[:search].present?
+    if params[:search].present?
       sql_query = "location ILIKE :q OR description ILIKE :q"
       @event_spaces = policy_scope(EventSpace.all.where(sql_query, q: "%#{params[:search]}%"))
     else

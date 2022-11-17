@@ -14,6 +14,13 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    if @booking.update(booking_params)
+      redirect_to user_dashboard_path, status: :see_other
+    # else
+    #   render 'user_dashboard', status: :unprocessable_entity
+    end
   end
 
   private
