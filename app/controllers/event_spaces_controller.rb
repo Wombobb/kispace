@@ -4,6 +4,8 @@ class EventSpacesController < ApplicationController
   def show
     @event_space = EventSpace.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
+    @event_space_reviews = Review.where(event_space: @event_space)
     authorize @event_space
     @markers =
       [{
@@ -15,7 +17,12 @@ class EventSpacesController < ApplicationController
   end
 
   def index
-    @event_spaces = policy_scope(EventSpace)
+     if params[:search].present?
+      sql_query = "location ILIKE :q OR description ILIKE :q"
+      @event_spaces = policy_scope(EventSpace.all.where(sql_query, q: "%#{params[:search]}%"))
+    else
+      @event_spaces = policy_scope(EventSpace)
+    end
     @markers = @event_spaces.geocoded.map do |space|
       {
         lat: space.latitude,
@@ -24,6 +31,7 @@ class EventSpacesController < ApplicationController
         image_url: helpers.asset_url("/app/assets/images/logo.png")
       }
     end
+    authorize @event_spaces
   end
 
   def new
