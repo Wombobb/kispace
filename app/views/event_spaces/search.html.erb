@@ -1,0 +1,21 @@
+<%= link_to '<- Back To Listings', event_spaces_index_path, class: 'btn btn-light'  %>
+<div class="container mb-3 mt-3" >
+  <div>
+    <h3>Search Results
+      <h3>
+      </div>
+      <!-- at the end of the body -->
+      <% @results.each do |result| %>
+        <div class="card mb-3" style="width: 40rem;">
+          <div class="col-sm-12">
+            <img class="card-img-top" src=<%=result.photos.attached? ? cl_image_path(result.photos.first.key) : "http://source.unsplash.com/featured/?#{result.location}&#{rand(1000)}/400x333"%> >
+            <div class="card-body">
+              <h2 class="card-title"><%= link_to result.name,  event_space_path(result), style: 'color: orange;text-decoration:none;' %></h2>
+              <p class="card-text"><%= result.location.capitalize %></p>
+              <p class="card-text">¥<%= result.price%></p>
+              <p class="card-text"><%= result.description%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
