@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index
   resources :event_spaces, only: %i[new index show create] do
-      resources :bookings, only: :create
+    resources :bookings, only: :create
+    resources :reviews, only: :create
   end
   resources :bookings, only: :update
   get '/dashboard', to: 'users#dashboard', as: :user_dashboard

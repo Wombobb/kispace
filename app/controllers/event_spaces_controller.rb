@@ -4,6 +4,8 @@ class EventSpacesController < ApplicationController
   def show
     @event_space = EventSpace.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
+    @event_space_reviews = Review.where(event_space: @event_space)
     authorize @event_space
   end
 
