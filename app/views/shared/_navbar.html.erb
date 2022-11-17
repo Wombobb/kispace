@@ -11,7 +11,7 @@
         <li>
           <%= form_tag(event_spaces_path, :method => "get") do %>
             <div class="input-group">
-              <%= search_field_tag :search, params[:search], placeholder: "Somalia", class: "form-control mr-sm-2" %>
+              <%= search_field_tag :search, params[:search], class: "form-control mr-sm-2" %>
               <div class="input-group-btn">
                 <%= button_tag "Search for Location", class: "form-control", :name => nil%>
               </div>
@@ -22,8 +22,15 @@
               <%= link_to "Dashboard", user_dashboard_path, class: "nav-link" %>
             </li>
             <li class="nav-item dropdown">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: 'avatar-bordered dropdown-toggle', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% else %>
+                <%= image_tag "Hyatt.jpg", class: 'avatar-bordered dropdown-toggle', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Update Profile
+                </button>
                 <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
               </div>
             </li>
@@ -36,3 +43,25 @@
       </div>
     </div>
   </div>
+<% if user_signed_in? %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Profile</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for current_user do |f| %>
+            <%= f.input :f_name, :label => 'First name:' %>
+            <%= f.input :l_name, :label => 'Last name:'  %>
+            <%= f.input :photo, as: :file %>
+            <div class="modal-footer">
+              <%= f.submit 'Save' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
