@@ -5,10 +5,25 @@ class EventSpacesController < ApplicationController
     @event_space = EventSpace.find(params[:id])
     @booking = Booking.new
     authorize @event_space
+    @markers =
+      [{
+        lat: @event_space.geocode[0],
+        lng: @event_space.geocode[1],
+        info_window: render_to_string(partial: "info_window", locals: {space: @event_space}),
+        image_url: helpers.asset_url("/app/assets/images/logo.png")
+      }]
   end
 
   def index
     @event_spaces = policy_scope(EventSpace)
+    @markers = @event_spaces.geocoded.map do |space|
+      {
+        lat: space.latitude,
+        lng: space.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {space: space}),
+        image_url: helpers.asset_url("/app/assets/images/logo.png")
+      }
+    end
   end
 
   def new
@@ -25,12 +40,6 @@ class EventSpacesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def search
-    request = params[:search].downcase
-    @results = EventSpace.all.where("location ILIKE ?", "%#{request}%")
-    authorize @results
   end
 
   private
