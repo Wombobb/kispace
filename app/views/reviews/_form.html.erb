@@ -1,0 +1,8 @@
+<div class="container mt-4">
+  <h2>Add a review</h2>
+  <%= simple_form_for [@event_space, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <%= f.submit %>
+  <% end %>
+</div>
