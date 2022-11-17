@@ -27,18 +27,18 @@
       </div>
     </div>
   </div>
-  <% @event_space.reviews.each do |review| %>
-    <div class="card shadow p-2 mt-2 rounded">
-      <div class="card-body">
-        <ul>
+  <div class="review-card">
+    <h2>Reviews</h2>
+    <ul>
+      <% @event_space_reviews.each do |review| %>
+        <li>
           <h4><%= review.comment%></h4>
           <p>Rated: <%= review.rating%> stars</p>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
