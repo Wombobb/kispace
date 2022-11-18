@@ -17,7 +17,7 @@ class EventSpacesController < ApplicationController
 
   def index
     if params[:search].present?
-      sql_query = "location ILIKE :q OR description ILIKE :q"
+      sql_query = "location ILIKE :q OR address ILIKE :q"
       @event_spaces = policy_scope(EventSpace.all.where(sql_query, q: "%#{params[:search]}%"))
     else
       @event_spaces = policy_scope(EventSpace)
