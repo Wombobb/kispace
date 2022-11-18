@@ -1,7 +1,10 @@
 <%= simple_form_for @event_space do |f| %>
   <%= f.input :name %>
+  <%= f.input :address %>
   <%= f.input :location %>
   <%= f.input :description %>
+  <%= f.input :size %>
+  <%= f.input :capacity %>
   <%= f.input :price %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit class: 'btn btn-primary mt-2' %>
