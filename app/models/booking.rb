@@ -8,4 +8,8 @@ class Booking < ApplicationRecord
   def pending?
     status == 'pending'
   end
+
+  def accepted?
+    status == 'accepted'
+  end
 end
