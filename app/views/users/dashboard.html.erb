@@ -1,22 +1,24 @@
 
-<div class="container m-3">
-  <div class="row justify-content-between">
-    <div class="col-4">
-      <h1 class="text-secondary">Dashboard</h1>
+<div class="container mt-2 pt-3 bg-light">
+  <div class="card-holder">
+    <div class="card-dash">
+      <h1 class="text-secondary mb-0">Dashboard</h1>
     </div>
-    <div class="col">
-      <p>Welcome back, <%= @user.f_name %></p>
+    <div class="card-dash">
+      <%= link_to "Add Space", new_event_space_path, class: "btn btn-flat" %>
+      <%= link_to "Add Booking", event_spaces_path, class: "btn btn-flat" %>
     </div>
-    <div class="col">
-        <%= link_to "Add Space", new_event_space_path, class: "btn btn-flat" %>
-        <%= link_to "Add Booking", event_spaces_path, class: "btn btn-flat" %>
-    </div>
+  </div>
+  <div>
+    <% if @user.f_name.present? %>
+      <p class="text-sub-heading">Welcome back <%= @user.f_name %></p>
+    <% end %>
   </div>
   <div class="row">
     <% if @user.bookings.present? %>
       <%= render 'users/booking_grid'%>
     <% end %>
-    <% if @event_spaces.present? %>
+    <%= if @event_spaces.present? %>
       <%= render 'users/event_list_grid' %>
     <% end %>
   </div>

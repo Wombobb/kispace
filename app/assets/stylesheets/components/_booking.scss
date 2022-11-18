@@ -38,3 +38,30 @@
     font-weight: lighter;
   }
 }
+
+.booking-dash-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.booking-dash {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 1em;
+  margin-left: 8px;
+
+  .booking-dash-info > h3{
+    font-weight: 500;
+  }
+
+  .booking-dash-status {
+
+
+  }
+}
+
+
+.booking-img {
+  width: 285px;
+}

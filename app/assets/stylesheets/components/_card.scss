@@ -45,10 +45,12 @@
   align-items: center;
 }
 
+.card-dash {
+  height: 50px;
+}
+
 .card-info-about {
   color: $gray;
-  // font-size: 24px;
-  // font-weight: bold;
   align-items:flex-start;
   padding-left: 24px;
   h2, h5 {

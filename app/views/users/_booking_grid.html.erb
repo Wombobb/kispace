@@ -4,24 +4,25 @@
   <% else %>
     <h4 class="">Booking</h4>
   <% end %>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Name:</th>
-        <th scope="col">Location:</th>
-        <th scope="col">Price:</th>
-        <th scope="col">Status:</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @user.bookings.each do |booking| %>
-      <tr>
-        <td><%= booking.event_space.name%></td>
-        <td><%= booking.event_space.location%></td>
-        <td><%= booking.event_space.price%></td>
-        <td><%= booking.status%></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="bookings">
+  <% @user.bookings.each do |booking| %>
+    <div class="booking-dash-container">
+        <!-- if you're using cloudinary and activestorage -->
+      <%= image_tag "Conference.jpg", class: 'booking-img' %>
+      <div class="booking-dash">
+        <div class="booking-info">
+          <h3><%= booking.event_space.name%></h3>
+          <p><%= booking.event_space.location.capitalize%></p>
+          <p>
+            <%= booking.start_date.strftime("%b. %d, %Y") %> - <%= booking.end_date.strftime("%b. %d, %Y") %>
+          </p>
+        </div>
+        <div class="booking-info-status">
+          <%= booking.status.capitalize%>
+          <p>$ <%= booking.event_space.price.to_i %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 </div>
