@@ -19,11 +19,15 @@
               <h2><%= @event_space.location.capitalize %></h2>
             </span>
             <span id="show-price">
-              <h2>¥<%= @event_space.price %></h2>
+              <h2>¥<%= @event_space.price.to_i %></h2>
             </span>
           </div>
+          <br>
           <p><%= @event_space.description %></p>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add a Review</button>
+          <p>address: <%= @event_space.address %></p>
+          <p><%= @event_space.size %> square meters</p>
+          <p><%= @event_space.capacity %> capacity</p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Add a Review</button>
         </div>
       </div>
       <div class="col">
@@ -48,7 +52,7 @@
     </ul>
   </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
