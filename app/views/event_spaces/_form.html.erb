@@ -1,8 +1,19 @@
-<%= simple_form_for @event_space do |f| %>
-  <%= f.input :name %>
-  <%= f.input :location %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit class: 'btn btn-primary mt-2' %>
-<% end %>
+<div class="container bg-white p-4">
+  <div class="d-grid gap-2 justify-content-md-start mb-3">
+    <%= link_to 'Back', event_spaces_index_path, class: 'btn btn-ghost'  %>
+  </div>
+  <h1 class="text-header">Create New Event Space</h1>
+    <%= simple_form_for @event_space do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :location, label: 'City' %>
+      <%= f.input :description %>
+      <%= f.input :size, label: 'Size in (sq.m)' %>
+      <%= f.input :capacity %>
+      <%= f.input :price %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <%= f.submit class: 'btn btn-flat mt-2' %>
+      </div>
+    <% end %>
+</div>

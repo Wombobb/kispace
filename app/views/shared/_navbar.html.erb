@@ -21,25 +21,30 @@
           <li class="nav-item active">
             <%= link_to "Dashboard", user_dashboard_path, class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: 'avatar-bordered dropdown-toggle', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "Hyatt.jpg", class: 'avatar-bordered dropdown-toggle', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Update Profile
-              </button>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Dashboard", user_dashboard_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: 'avatar-bordered dropdown-toggle', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% else %>
+                <%= image_tag "Doug.jpg", class: 'avatar-bordered dropdown-toggle', id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Update Profile
+                </button>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

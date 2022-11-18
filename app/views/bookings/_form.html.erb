@@ -1,8 +1,5 @@
-<div class="container mt-4">
-  <h2>Make a booking!</h2>
-  <%= simple_form_for [@event_space, @booking] do |f| %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.submit class: 'btn btn-primary' %>
-  <% end %>
-</div>
+<%= simple_form_for [@event_space, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit class: 'btn btn-flat' %>
+<% end %>

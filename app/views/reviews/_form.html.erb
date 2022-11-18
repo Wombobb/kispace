@@ -1,13 +1,14 @@
 <div class="container mt-4">
-  <h2>Create a review</h2>
+  <h2>Review</h2>
   <%= simple_form_for [@event_space, @review] do |f| %>
     <%= f.input :comment %>
-    <div class="star-rating">
-      <% 5.times do |i| %>
-        <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %>>
-      <% end %>
+    <div class="d-flex justify-content-between">
+      <div class="star-rating mb-4">
+        <% 5.times do |i| %>
+          <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %>>
+        <% end %>
+      </div>
+      <%= f.submit class: "btn btn-flat" %>
     </div>
-    <div></div>
-    <%= f.submit %>
   <% end %>
 </div>

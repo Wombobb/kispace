@@ -11,10 +11,11 @@
             <% end %>
             <div class="booking-info">
               <div class="booking-info-title">
-                <%= space.name %>
                 <%= booking.user.f_name %>
+                <%= booking.user.l_name %>
               </div>
               <div class="booking-info-details">
+                <p class="mb-0"><%= space.name %></p>
                 <%= booking.start_date.strftime("%b. %d, %Y") %> - <%= booking.end_date.strftime("%b. %d, %Y") %>
               </div>
             </div>

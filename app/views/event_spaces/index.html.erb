@@ -9,7 +9,7 @@
             <h3 class="card-title"><%= link_to space.name, event_space_path(space), style: 'color: orange;text-decoration:none;' %></h3>
             <div id="index-inline">
               <span id="index-city"><%= space.location.capitalize %></span>
-              <span id="index-price">¥<%= space.price %></span>
+              <span id="index-price">¥<%= space.price.to_i %></span>
             </div>
           </div>
         </div>
