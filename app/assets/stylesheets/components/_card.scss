@@ -81,9 +81,21 @@
   border-radius: 3px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   height: 360px;
+  position: relative;
 }
 
-.city_card a {
+.spaces-card button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#show-inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.city-card a {
   text-decoration: none;
 }
 
@@ -105,6 +117,11 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 350px;
   margin: 5px;
+}
+
+#index-inline {
+  display: flex;
+  justify-content: space-between;
 }
 
 .review-card {
