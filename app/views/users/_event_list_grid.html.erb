@@ -30,7 +30,11 @@
                 <%= f.submit 'Accept', class: 'btn btn-flat-accept' %>
               <% end %>
             <% else %>
-              <p class='booking-tag'><%= booking.status.capitalize %></p>
+              <% if booking.accepted?  %>
+                <p class='booking-tag-accept'><%= booking.status.capitalize %></p>
+              <% else %>
+                <p class='booking-tag'><%= booking.status.capitalize %></p>
+              <% end %>
             <% end %>
           </div>
         </div>
