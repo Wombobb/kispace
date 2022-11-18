@@ -1,11 +1,14 @@
 <div class="container mt-3">
-  <% if @event_spaces.count > 1 %>
-    <h4 class="">Event Spaces</h4>
-  <% else %>
-    <h4 class="">Event Space</h4>
-  <% end %>
+  <% if current_user %>
+    <% if @event_spaces.count > 1 %>
+      <%# <h4 class="">Event Spaces</h4> %>
+    <% else %>
+      <h4 class="">Event Space</h4>
+    <% end %>
+
   <div class="bookings">
     <% @event_spaces.each do |space| %>
+      <p><%= space %></p>
       <% space.bookings.sort_by{ |date| date.start_date }.each do |booking| %>
         <div class="booking">
           <div class='booking-left'>
@@ -41,5 +44,5 @@
       <% end %>
     <% end %>
   </div>
-
+<% end %>
 </div>
