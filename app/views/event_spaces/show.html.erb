@@ -37,26 +37,41 @@
         </div>
       </div>
       <div class="col">
-        <div class="spaces-card p-4">
-          <%= render "bookings/form" %>
+        <div class="spaces-card">
+          <div style="width: 100%; height: 100%;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="review-card">
-    <h2>Reviews</h2>
-    <ul>
-      <% @event_space.reviews.each do |review| %>
-        <li>
-          <h4><%= review.comment%></h4>
-          <p><% (review.rating).times do %>
-              <i class="fa-solid fa-star text-warning"></i>
+  <div class="flex-container">
+    <div class="row">
+      <div class="col">
+        <div class="review-card">
+          <h4>Reviews</h4>
+          <ul>
+            <% @event_space.reviews.each do |review| %>
+              <li>
+                <h6><%= review.comment%></h6>
+                <p><% (review.rating).times do %>
+                    <i class="fa-solid fa-star text-warning"></i>
+                  <% end %>
+                </p>
+              </li>
             <% end %>
-          </p>
-        </li>
-      <% end %>
-    </ul>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="review-card">
+          <h2>Booking</h2>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 </div>
 <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -73,10 +88,4 @@
       </div>
     </div>
   </div>
-</div>
-<div class ="container">
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
