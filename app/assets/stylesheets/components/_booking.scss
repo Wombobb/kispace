@@ -3,6 +3,8 @@
   justify-content: space-between;
   align-items: center;
   margin: 16px 0;
+  border-bottom: 2px solid $light-gray;
+  padding-bottom: 8px;
 
   .booking-left {
     display: flex;
@@ -12,22 +14,33 @@
   .booking-actions {
     display: flex;
     align-items: center;
+    color: white;
   }
   .booking-tag {
     margin: 1px 4px;
-    padding: 2px 5px 0px 5px;
-    background-color: #bfbfbf;
-    color: white;
-    border-radius: 8px;
-    font-weight: lighter;
-    font-size: 12px;
+    padding: 5px;
+    border-bottom: 2px double red;
+    background-color: $white;
+    color: $red;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .booking-tag-accept {
+    margin: 1px 4px;
+    padding: 5px;
+    border-bottom: 2px double $blue;
+    background-color: $white;
+    color: $blue;
+    font-weight: 500;
+    font-size: 16px;
   }
 }
 
 .booking-info {
   display: flex;
   flex-direction: column;
-  margin-left: 8px;
+  margin-left: 16px;
 
   .booking-info-title {
     font-weight: bolder;

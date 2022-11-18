@@ -12,19 +12,6 @@
   opacity: 1;
 }
 
-.btn-flat {
-  color: $orange;
-  padding: 8px 16px;
-  border-radius: 4px;
-  background: white;
-  border: 2px solid $orange;
-  transition: background 0.3s ease;
-}
-
-.btn-flat:hover {
-  background: $orange;
-  color: white;
-}
 
 .btn-gradient {
   color: white;
@@ -38,5 +25,41 @@
 
 .btn-gradient:hover {
   background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+
+.btn-flat {
+  color: $orange;
+  padding: 8px 16px;
+  border-radius: 2px;
+  background: white;
+  border: 2px solid $orange;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: $orange;
+  color: white;
+}
+
+.btn-flat-accept {
+  color: $white;
+  background: $blue;
+}
+
+.btn-flat-accept:hover {
+  color: $blue;
+  border: 2px solid $blue;
+}
+
+.btn-flat-red {
+  color: $red;
+  padding: 8px 16px;
+  background: white;
+  transition: background 0.3s ease;
+}
+
+.btn-flat-red:hover {
+  background: $orange;
   color: white;
 }

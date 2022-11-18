@@ -1,17 +1,13 @@
 <div class="container mt-3">
-  <% if @event_spaces.count > 1 %>
-    <h4 class="">Event Spaces</h4>
-  <% else %>
-    <h4 class="">Event Space</h4>
-  <% end %>
-  <div class="bookings">
-    <% @event_spaces.each do |space| %>
+  <% if current_user %>
+    <div class="bookings">
+    <% current_user.event_spaces.each do |space| %>
       <% space.bookings.sort_by{ |date| date.start_date }.each do |booking| %>
         <div class="booking">
           <div class='booking-left'>
             <!-- if you're using cloudinary and activestorage -->
             <% if booking.user.photo.attached? %>
-              <%= cl_image_tag booking.user.photo.key  %>
+              <%= cl_image_tag booking.user.photo.key, class: 'avatar-bordered'  %>
             <% end %>
             <div class="booking-info">
               <div class="booking-info-title">
@@ -26,19 +22,24 @@
           <div class="booking-actions">
             <% if booking.pending? %>
               <%= simple_form_for booking do |f| %>
-                <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-                <%= f.submit 'Accept', class: 'btn btn-info' %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                <%= f.submit 'Reject', class: 'btn btn-flat-red' %>
               <% end %>
               <%= simple_form_for booking do |f| %>
-                <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                <%= f.submit 'Reject', class: 'btn btn-light' %>
+                <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                <%= f.submit 'Accept', class: 'btn btn-flat-accept' %>
               <% end %>
             <% else %>
-              <p class='booking-tag'><%= booking.status %></p>
+              <% if booking.accepted?  %>
+                <p class='booking-tag-accept'><%= booking.status.capitalize %></p>
+              <% else %>
+                <p class='booking-tag'><%= booking.status.capitalize %></p>
+              <% end %>
             <% end %>
           </div>
         </div>
       <% end %>
     <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

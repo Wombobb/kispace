@@ -1,4 +1,6 @@
 require "faker"
+require "open-uri"
+require "yaml"
 
 puts "destroying reviews, bookings, eventspace and Users in that order"
 Review.destroy_all
@@ -19,16 +21,18 @@ end
 puts "made #{User.all.count} user/s"
 
 LOCATION = ["tokyo", "kyoto", "osaka", "sapporo", "naha", "fukuoka"]
-
+address_url = "https://raw.githubusercontent.com/trouni/the-spoon-928/lecture/geocoding/db/addresses.yml"
+serialized_addresses = URI.open(address_url).read
+addresses = YAML.load(serialized_addresses)
 puts "creating eventspaces"
 100.times do
-  EventSpace.create!(user_id: User.all.sample.id, name: Faker::Address.unique.street_name, location: LOCATION.sample, price: rand(300..1000), description: Faker::Lorem.sentences(number: 6).join(" "))
+  EventSpace.create!(user_id: User.all.sample.id, name: Faker::Address.unique.street_name, location: LOCATION.sample, price: rand(300..1000), description: Faker::Lorem.sentences(number: 12).join(" "), address: addresses.sample, size: rand(40..160), capacity: rand(6..180))
 end
 puts "made #{EventSpace.all.count} eventspace/s"
 
 puts "creating reviews"
 300.times do
-  Review.create!(comment: Faker::Lorem.sentences(number: 3).join(" "), rating: rand(0..5), user_id: User.all.sample.id, event_space_id: EventSpace.all.sample.id)
+  Review.create!(comment: Faker::Lorem.sentences(number: 3).join(" "), rating: rand(1..5), user_id: User.all.sample.id, event_space_id: EventSpace.all.sample.id)
 end
 puts "made #{Review.all.count} review/s"
 
