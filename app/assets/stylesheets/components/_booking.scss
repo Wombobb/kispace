@@ -40,19 +40,29 @@
 }
 
 .booking-dash-container {
+  border: 1px solid gainsboro;
+  border-radius: 14px;
+  margin: 24px;
   display: flex;
   justify-content: flex-start;
+  transition: background 0.3s ease; /* Animation */
 }
+
 
 .booking-dash {
   display: flex;
-  flex-grow: 1;
-  justify-content: space-between;
-  gap: 1em;
-  margin-left: 8px;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: 1em;
+    margin-left: 8px;
+    padding: 38px;
+
+
+
 
   .booking-dash-info > h3{
     font-weight: 500;
+    padding-top: 5px;
   }
 
   .booking-dash-status {
@@ -61,7 +71,21 @@
   }
 }
 
+.booking-dash-container:hover {
+  background-color: #FB5607;
+  color: white; /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  .title{
+    color:white;
+  }
+}
 
 .booking-img {
   width: 285px;
+  height: 200px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.container-box{
+  margin: 24px;
 }

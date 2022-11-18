@@ -4,25 +4,28 @@
   <% else %>
     <h4 class="">Booking</h4>
   <% end %>
-<div class="bookings">
-  <% @user.bookings.each do |booking| %>
-    <div class="booking-dash-container">
-        <!-- if you're using cloudinary and activestorage -->
-      <%= image_tag "Conference.jpg", class: 'booking-img' %>
-      <div class="booking-dash">
-        <div class="booking-info">
-          <h3><%= booking.event_space.name%></h3>
-          <p><%= booking.event_space.location.capitalize%></p>
-          <p>
-            <%= booking.start_date.strftime("%b. %d, %Y") %> - <%= booking.end_date.strftime("%b. %d, %Y") %>
-          </p>
+  <div class="container-box">
+    <div class="bookings">
+      <% @user.bookings.each do |booking| %>
+        <div class="booking-dash-container">
+          <!-- if you're using cloudinary and activestorage -->
+          <img class="booking-img" src=<%=booking.photos.attached? ? cl_image_path(booking.photos.first.key) : "http://source.unsplash.com/featured/?#{booking.event_space.location
+}&#{rand(1000)}"%> >
+          <div class="booking-dash">
+            <div class="booking-info">
+              <h3 class= "title"><%= link_to booking.event_space.name, event_space_path(booking), style: 'color: orange;text-decoration:none;' %></h3>
+              <p><%= booking.event_space.location.capitalize%></p>
+              <p>
+                <%= booking.start_date.strftime("%b. %d, %Y") %> - <%= booking.end_date.strftime("%b. %d, %Y") %>
+              </p>
+            </div>
+            <div class="booking-info-status">
+              <%= booking.status.capitalize%>
+              <p>$ <%= booking.event_space.price.to_i %></p>
+            </div>
+          </div>
         </div>
-        <div class="booking-info-status">
-          <%= booking.status.capitalize%>
-          <p>$ <%= booking.event_space.price.to_i %></p>
-        </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
 </div>
