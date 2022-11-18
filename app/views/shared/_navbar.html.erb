@@ -17,10 +17,6 @@
             <% end %>
           </div>
         </li>
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Dashboard", user_dashboard_path, class: "nav-link" %>
-          </li>
           <% if user_signed_in? %>
             <li class="nav-item active">
               <%= link_to "Dashboard", user_dashboard_path, class: "nav-link" %>
