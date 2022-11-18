@@ -4,11 +4,15 @@
     <h1><%= @event_space.name.capitalize %></h1>
   </div>
   <section id="photoArray">
-    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.first.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
-    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.second.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
-    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.third.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
-    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.forth.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
-    <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=@event_space.photos.attached? ? cl_image_path(@event_space.photos.fifth.key) : "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
+    <% if @event_space.photos.attached? %>
+      <% @event_space.photos.each do |photo| %>
+        <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%=cl_image_path(photo.key)%>)"> </div>
+      <% end %>
+    <% else %>
+      <% 5.times do  %>
+        <div style="background-size: cover; background-repeat: no-repeat; background-image: url(<%= "http://source.unsplash.com/featured/?#{@event_space.location}&#{rand(1000)}/450x450"%>)"> </div>
+      <% end %>
+    <% end %>
   </section>
   <div class="flex-container">
     <div class="row mt-3">
@@ -24,9 +28,11 @@
           </div>
           <br>
           <p><%= @event_space.description %></p>
-          <p>address: <%= @event_space.address %></p>
-          <p><%= @event_space.size %> square meters</p>
-          <p><%= @event_space.capacity %> capacity</p>
+          <p><i class="fa-solid fa-map-location-dot text-warning"></i> <%= @event_space.address %></p>
+          <div class="d-flex flex-row justify-content-between">
+            <p><i class="fa-solid fa-ruler-combined text-warning"></i> <%= @event_space.size %> meters squared</p>
+            <p><%= @event_space.capacity %> <i class="fa-solid fa-person text-warning"></i></p>
+          </div>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Add a Review</button>
         </div>
       </div>
