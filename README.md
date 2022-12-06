@@ -1,6 +1,6 @@
 # 📚 KiSpace
 
-KiSpace is a BnB style website that aims to rent event spaces and allow others to post their own spaces.
+KiSpace is a BnB inspired website that aims to rent event spaces and allow others to post their own spaces.
 
 ![KiSpace homepage](https://user-images.githubusercontent.com/91389023/205850536-54f20887-fba5-4a3d-a405-10e01921ef6c.PNG)
 ![KiSpace space list](https://user-images.githubusercontent.com/91389023/205850438-42ed83d6-af96-462c-807a-b094925ea78c.PNG)
